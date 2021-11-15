@@ -11,14 +11,15 @@ pipeline {
       environment {
         b = 'bbb'
       }
-      steps {
-        sh '# mvn test'
-        echo '${b}'
-      }
       post {
         always {
           junit 'target/surefire-reports/*.xml'
         }
+
+      }
+      steps {
+        sh '# mvn test'
+        echo '${b}'
       }
     }
 
